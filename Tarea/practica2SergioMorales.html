@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+
+<body>
+    <div>
+        <fieldset>
+            <legend>Calculadora</legend>
+            <p>
+                <label for="num1">Número 1:</label>
+                <input id="num1" type="text" name="num1" value="0" />
+            </p>
+            <p>
+                <label for="num2">Número 2:</label>
+                <input id="num2" type="text" name="num2" value=0 />
+            </p>
+            <button id="suma" onclick="suma()">
+                    <strong>+</strong> 
+                </button>
+            <button id="resta" onclick="resta()">
+                    <strong>-</strong> 
+                </button>
+            <button id="mult" onclick="mult()">
+                    <strong>*</strong> 
+                </button>
+            <button id="div" onclick="division()">
+                    <strong>/</strong> 
+                </button>
+        </fieldset>
+    </div>
+    <div>
+        <h3>Resultado</h3>
+        <p>
+            <span id="resultado"></span>
+        </p>
+    </div>
+    <div>
+        <form id="form_ecuacion">
+            <fieldset>
+                <legend>Calculadoras ecuación cuadrática</legend>
+                <p>
+                    <label for="input_a">Ingrese el valor de a:</label>
+                    <input id="input_a" type="text" name="input_a" />
+                </p>
+                <p>
+                    <label for="input_b">Ingrese el valor de b:</label>
+                    <input id="input_b" type="text" name="input_b" />
+                </p>
+                <p>
+                    <label for="input_c">Ingrese el valor de c:</label>
+                    <input id="input_c" type="text" name="input_c" />
+                </p>
+                <p>
+                    <button type="submit">
+                        Calcular 
+                    </button>
+                </p>
+            </fieldset>
+        </form>
+        <div>
+            <h3>Resultado</h3>
+            <p>
+                <span id="r1"></span>
+            </p>
+            <p>
+                <span id="r2"></span>
+            </p>
+        </div>
+    </div>
+    <script language="JavaScript">
+        function suma(e) {
+            const num1 = Number(document.getElementById("num1").value)
+            const num2 = Number(document.getElementById("num2").value)
+            document.getElementById("resultado").textContent = `Resultado: ${num1 + num2}`
+        }
+
+        function resta(e) {
+            const num1 = Number(document.getElementById("num1").value)
+            const num2 = Number(document.getElementById("num2").value)
+            document.getElementById("resultado").textContent = `Resultado: ${num1 - num2}`
+        }
+
+        function mult(e) {
+            const num1 = Number(document.getElementById("num1").value)
+            const num2 = Number(document.getElementById("num2").value)
+            document.getElementById("resultado").textContent = `Resultado: ${num1 * num2}`
+        }
+
+        function division(e) {
+            const num1 = Number(document.getElementById("num1").value)
+            const num2 = Number(document.getElementById("num2").value)
+            if (num2 === 0) {
+                alert("Error: No se puede dividir entre 0")
+                return;
+            }
+            document.getElementById("resultado").textContent = `Resultado: ${num1 / num2}`
+        }
+
+        function calcularX(e) {
+            e.preventDefault()
+
+            let a, b, c;
+            a = Number(document.getElementById("input_a").value);
+            b = Number(document.getElementById("input_b").value);
+            c = Number(document.getElementById("input_c").value);
+            if (a === 0) {
+                alert("Error: a no puede ser 0")
+                return;
+            }
+            const x1 = (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a)
+            const x2 = (-b - Math.sqrt(b * b - 4 * a * c)) / (2 * a)
+            r1.textContent = `Resultado 1: ${x1}`
+            r2.textContent = `Resultado 2: ${x2}`
+        }
+        const form = document.getElementById("form_ecuacion")
+        form.addEventListener('submit', calcularX);
+        const r1 = document.getElementById("r1")
+        const r2 = document.getElementById("r2")
+
+        // let a, b, c;
+        // a = Number(prompt('Ingrese el valor de a:', ''));
+        // b = Number(prompt('Ingrese el valor de b:', ''));
+        // c = Number(prompt('Ingrese el valor de c:', ''));
+        // document.write('a: ', a, ' b: ', b, ' c: ', c);
+        // const x1 = (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a)
+        // const x2 = (-b - Math.sqrt(b * b - 4 * a * c)) / (2 * a)
+        // document.write("\n")
+        // document.write("EL primer resultado es: ", x1)
+        // document.write("\n")
+        // document.write("EL segundo resultado es: ", x2)
+        // const comp1 = a * x1 * x1 + b * x1 + c
+        // document.write('\nComp 1: ', comp1)
+        // const comp2 = a * x2 * x2 + b * x2 + c
+
+        // document.write('\nComp 2: ', comp2)
+    </script>
+</body>
+
+</html>
