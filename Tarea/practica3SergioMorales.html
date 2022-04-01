@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+
+<body>
+    <div>
+        <h3>Opciones de operadores:</h3>
+        <ul>
+            <li>Suma: +</li>
+            <li>Resta: -</li>
+            <li>Multiplicación: *</li>
+            <li>División: /</li>
+            <li>Potencia: **</li>
+        </ul>
+    </div>
+    <div>
+        <fieldset>
+            <legend>Calculadora</legend>
+            <p>
+                <label for="num1">Número 1:</label>
+                <input id="num1" type="text" name="num1" value="0" />
+            </p>
+            <p>
+                <label for="operador">Operador :</label>
+                <input id="operador" type="text" name="operador" value="" />
+            </p>
+            <p>
+                <label for="num2">Número 2:</label>
+                <input id="num2" type="text" name="num2" value=0 />
+            </p>
+            <p>
+                <button onclick="respuesta()">
+                    Calcular 
+                </button>
+            </p>
+        </fieldset>
+    </div>
+    <div>
+        <h3>Resultado</h3>
+        <p>
+            <span id="resultado"></span>
+        </p>
+    </div>
+    <script language="JavaScript">
+        function respuesta(e) {
+            const num1 = Number(document.getElementById("num1").value)
+            const num2 = Number(document.getElementById("num2").value)
+            const operador = document.getElementById("operador").value
+            if (operador === "+") {
+                document.getElementById("resultado").textContent = `Resultado: ${num1 + num2}`
+            } else if (operador === "-") {
+                document.getElementById("resultado").textContent = `Resultado: ${num1 - num2}`
+            } else if (operador === "*") {
+                document.getElementById("resultado").textContent = `Resultado: ${num1 * num2}`
+            } else if (operador === "/") {
+                document.getElementById("resultado").textContent = `Resultado: ${num1 / num2}`
+            } else if (operador === "**") {
+                document.getElementById("resultado").textContent = `Resultado: ${Math.pow(num1, num2)}`
+            } else {
+                document.getElementById("resultado").textContent = "Operador inválido"
+            }
+        }
+    </script>
+</body>
+
+</html>
